@@ -1,0 +1,15 @@
+language: r
+sudo: required
+r_packages:
+- covr
+after_failure:
+  email:
+    recipients:
+    - thosjleeper@gmail.com
+    on_success: change
+    on_failure: change
+after_success:
+- Rscript -e 'library("covr");codecov()'
+env:
+  global:
+    secure: OCB43t7HV8VxyxIZo4nt6pimuTAH4M7XM75Ft3qqubym7L5yeosL84h1uWpk0m0axD3BDq9O8TlvyPJdv4RuJrvgXqh0EXd9e7+xh2CdoXvDGqMpSOdYFE/J3PJZc2QTIv1rX98DozFsd4Jvr/vxFHgMUHBry53JPBALCRciC8JpiibnUPtFzfijeOeHpDJJLVC9YDHM25MHtYKxZyJH0a4rPhe5aQZOuHFonCG5HmO3uRx9zJyAU1YPogFX4ZUIcm5ta0EXcH4Z+MnQupcnWqwJ5+UXGJL+rO37Z6mC1YpyG1Fj5k41PstVs4dxPKusC/QbT4pTMWWd/aIhYFn10Afj6OIZysl9gvv1GLwb57O8zlXXvJoEQsACNplnOHgmM06vyAVI/0APp7Y8kkzKvkk1mFL2XS2D0j35JUa52UKihJBCdYEUJ+pNnH6iA7WR5QwAu8WmcZcZfK/3hCwT0vdMp8EUZo5ZyjscfwTqSYPJJWvo52wAc8LAg7T2AJoSg262S5MdBLHgi5OG9GyhFaduoNBSSoXmEN/5+pFOUKZcLdisNo+YXq9RvczWz3Fw4nuN03QysYOd1XfjmL7mflKhcH90UdaO/HT7lv7UEMZGM7yE0s3+mU9riASV61YffhRRLcjX6csMHIjAmjxPsNkmwzby4STqGwUwt2dnI7c=

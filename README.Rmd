@@ -1,0 +1,24 @@
+# Lumen Database API Client #
+
+**lumen** is a simple client package for the [Lumen Database](http://lumendatabase.org/) (formerly Chilling Effects) [API](https://github.com/berkmancenter/lumendatabase/blob/master/doc/api_documentation.mkd). It can retrieve, as well as deposit, copyright takedown notices from the Lumen database. It may be useful for tracking who is sending copyright-related cease and desist orders and what material is being used in apparent violation of copyright.
+
+## Installation ##
+
+[![CRAN](http://www.r-pkg.org/badges/version/lumen)](http://cran.r-project.org/package=lumen)
+[![Build Status](https://travis-ci.org/leeper/lumen.png?branch=master)](https://travis-ci.org/leeper/lumen) 
+[![codecov.io](http://codecov.io/github/leeper/lumen/coverage.svg?branch=master)](http://codecov.io/github/leeper/lumen?branch=master)
+
+This package is not yet on CRAN. To install the latest development version from GitHub, run the following:
+
+```R
+if(!require("devtools")){
+    install.packages("devtools")
+    library("devtools")
+}
+install_github("leeper/lumen")
+```
+
+## Code Examples ##
+
+Coming soon...
+
