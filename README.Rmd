@@ -1,12 +1,14 @@
 # Lumen Database API Client #
 
-**lumen** is a simple client package for the [Lumen Database](http://lumendatabase.org/) (formerly Chilling Effects) [API](https://github.com/berkmancenter/lumendatabase/blob/master/doc/api_documentation.mkd). It can retrieve, as well as deposit, copyright takedown notices from the Lumen database. It may be useful for tracking who is sending copyright-related cease and desist orders and what material is being used in apparent violation of copyright.
+**lumendb** is a simple client package for the [Lumen Database](http://lumendatabase.org/) (formerly Chilling Effects) [API](https://github.com/berkmancenter/lumendatabase/blob/master/doc/api_documentation.mkd). It can retrieve, as well as deposit, copyright takedown notices from the Lumen database. It may be useful for tracking who is sending copyright-related cease and desist orders and what material is being used in apparent violation of copyright.
+
+All Lumen Database data [is released under to Public Domain (CC0)](https://www.lumendatabase.org/pages/license), though the API has additional [terms of use](https://lumendatabase.org/pages/api_terms).
 
 ## Installation ##
 
-[![CRAN](http://www.r-pkg.org/badges/version/lumen)](http://cran.r-project.org/package=lumen)
-[![Build Status](https://travis-ci.org/leeper/lumen.png?branch=master)](https://travis-ci.org/leeper/lumen) 
-[![codecov.io](http://codecov.io/github/leeper/lumen/coverage.svg?branch=master)](http://codecov.io/github/leeper/lumen?branch=master)
+[![CRAN](http://www.r-pkg.org/badges/version/lumendb)](http://cran.r-project.org/package=lumendb)
+[![Build Status](https://travis-ci.org/leeper/lumendb.png?branch=master)](https://travis-ci.org/leeper/lumendb) 
+[![codecov.io](http://codecov.io/github/leeper/lumendb/coverage.svg?branch=master)](http://codecov.io/github/leeper/lumendb?branch=master)
 
 This package is not yet on CRAN. To install the latest development version from GitHub, run the following:
 
@@ -15,10 +17,22 @@ if(!require("devtools")){
     install.packages("devtools")
     library("devtools")
 }
-install_github("leeper/lumen")
+install_github("leeper/lumendb")
 ```
 
+Use of the package does not require an API token, though Lumen rate limits non-authenticated requests. To request a token, contact Lumen directly at: team (at) lumendatabase.org. The token should then be stored as an environment variable:
+
+Sys.setenv(LUMEN_TOKEN = "t1o2k3e4n5v6a7l8u9e")
+
+Or this can be passed atomically to every API call. Setting the environment variable is simpler and more secure because it will not be recorded in R history logs.
+
 ## Code Examples ##
+
+[Documentation for the Lumen Database API is available on GitHub](https://github.com/berkmancenter/lumendatabase/blob/dev/doc/api_documentation.mkd). This may be useful, particularly for those interested in conducting [complex full-text API searches](https://github.com/berkmancenter/lumendatabase/blob/dev/doc/api_documentation.mkd#search-notices-via-fulltext).
+
+```R
+library("lumendb")
+```
 
 Coming soon...
 

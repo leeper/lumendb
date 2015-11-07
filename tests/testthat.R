@@ -1,4 +1,4 @@
 library("testthat")
-library("lumen")
+library("lumendb")
 
-#test_check("lumen")
+#test_check("lumendb")

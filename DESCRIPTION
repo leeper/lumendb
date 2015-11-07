@@ -1,15 +1,14 @@
-Package: lumen
+Package: lumendb
 Type: Package
 Title: Lumen Database API Client
-Version: 0.1.1
-Date: 2015-11-05
+Version: 0.1.2
+Date: 2015-11-07
 Authors@R: c(person("Thomas J.", "Leeper", role = c("aut", "cre"),
                     email = "thosjleeper@gmail.com"))
 Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>
-Description: A simple client for the Lumen Database (formerly Chilling Effects) API.
+Description: A simple client for the Lumen Database <https://lumendatabase.org/> (formerly Chilling Effects) API.
 License: GPL (>= 2)
-URL: https://github.com/leeper/lumen
-BugReports: https://github.com/leeper/lumen/issues
+URL: https://github.com/leeper/lumendb
+BugReports: https://github.com/leeper/lumendb/issues
 Imports: httr, jsonlite
-Enhances: devtools
 Suggests: testthat

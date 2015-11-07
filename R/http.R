@@ -30,27 +30,82 @@ lumenHTTP <- function(verb = "GET",
           r <- httr::PUT(url, body = body, query = query, h, ...)
         }
     } 
+    httr::warn_for_status(r)
     return(httr::content(r, "parsed"))
 }
 
 #' @export
-ldnotices <- function(notice, ...) {
-    lumenHTTP(path = paste0("/notices/", notice, ".json"), ...)
+ldnotice <- function(notice, ...) {
+    x <- lumenHTTP(path = paste0("/notices/", notice, ".json"), ...)
+    structure(lapply(x, `class<-`, "lumen_notice")[[1]])
+}
+
+#' @export
+summary.lumen_notice <- function(object, ...) {
+    cat(x$type, " notice (", object$id, "): ", object$title, "\n", sep = "")
+    cat("Date Received: ", object$date_received, "\n", sep = "")
+    cat("Sender:        ", object$sender_name, "\n", sep = "")
+    cat("Principal:     ", object$principal_name, "\n", sep = "")
+    cat("Recipient:     ", object$recipient_name, "\n", sep = "")
+    cat("# of Infringing URLs:  ", sum(sapply(object$works, function(a) length(a$infringing_urls))), "\n", sep = "")
+    cat("# of Copyrighted URLs: ", sum(sapply(object$works, function(a) length(a$copyrighted_urls))), "\n", sep = "")
+    invisible(object)
 }
 
 #' @export
 ldtopics <- function(...) {
-    lumenHTTP(path = paste0("/topics.json"), ...)
+    x <- lumenHTTP(path = paste0("/topics.json"), ...)
+    structure(lapply(x[[1]], `class<-`, "lumen_topic"))
+}
+#' @export
+print.lumen_topic <- function(x, ...) {
+    cat("Topic (", x$id, "): ", x$name, "\n", sep = "")
+    invisible(x)
+}
+
+
+#' @export
+ldsearch <- function(query = list(), page = 1, per_page = 10, verbose = TRUE, ...) {
+    x <- lumenHTTP(path = paste0("/notices/search"), 
+                   query = c(query, list(page = page, per_page = per_page)), ...)
+    if (verbose) {
+        message(sprintf("Page %s of %s Returned. Response contains %s of %s %s. ", 
+                        x$meta$current_page, x$meta$total_pages, 
+                        x$meta$per_page, x$meta$total_entries, 
+                        ngettext(x$meta$total_entries, "notice", "notices")))
+    }
+    structure(list(entities = lapply(x$entities, `class<-`, "lumen_entity"), 
+                   meta = x$meta), 
+              class = "lumen_search")
 }
 
 #' @export
-ldsearch <- function(query = list(), ...) {
-    lumenHTTP(path = paste0("/notices/search"), query = query, ...)
+ldentities <- function(query = list(), page = 1, per_page = 10, verbose = TRUE, ...) {
+    x <- lumenHTTP(path = paste0("/entities/search"), 
+                   query = c(query, list(page = page, per_page = per_page)), ...)
+    if (verbose) {
+        message(sprintf("Page %s of %s Returned. Response contains %s of %s %s. ", 
+                        x$meta$current_page, x$meta$total_pages, 
+                        ifelse(x$meta$per_page < x$meta$total_entries, 
+                               x$meta$per_page, 
+                               x$meta$total_entries), 
+                        x$meta$total_entries, 
+                        ngettext(x$meta$total_entries, "entity", "entities")))
+    }
+    structure(list(entities = lapply(x$entities, `class<-`, "lumen_entity"), 
+                   meta = x$meta), 
+              class = "lumen_search")
 }
 
 #' @export
-ldentities <- function(query = list(), ...) {
-    lumenHTTP(path = paste0("/entities/search"), query = query, ...)
+print.lumen_entity <- function(x, ...) {
+    cat("Entity (", x$id, "): ", x$name, "\n", sep = "")
+    invisible(x)
+}
+#' @export
+print.lumen_search <- function(x, ...) {
+    lapply(x[[1]], print)
+    invisible(x)
 }
 
 # ldcreate <- function(query = list(), ...) {
