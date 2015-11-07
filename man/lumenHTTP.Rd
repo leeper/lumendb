@@ -19,7 +19,7 @@ lumenHTTP(verb = "GET", path = "", query = list(), body = "",
 
 \item{base}{A character string specifying the base URL for the API.}
 
-\item{token}{A character string containing a Lumen Database API token. If missing, defaults to value stored in environment variable \env{Lumen_TOKEN}.}
+\item{token}{A character string containing a Lumen Database API token. If missing, defaults to value stored in environment variable \env{LUMEN_TOKEN}.}
 
 \item{...}{Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}.}
 }

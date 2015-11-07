@@ -12,12 +12,13 @@ All Lumen Database data [is released under to Public Domain (CC0)](https://www.l
 
 This package is not yet on CRAN. To install the latest development version from GitHub, run the following:
 
-```R
+```{r}
 if(!require("devtools")){
     install.packages("devtools")
     library("devtools")
 }
 install_github("leeper/lumendb")
+library("lumendb")
 ```
 
 Use of the package does not require an API token, though Lumen rate limits non-authenticated requests. To request a token, contact Lumen directly at: team (at) lumendatabase.org. The token should then be stored as an environment variable:
@@ -28,11 +29,35 @@ Or this can be passed atomically to every API call. Setting the environment vari
 
 ## Code Examples ##
 
-[Documentation for the Lumen Database API is available on GitHub](https://github.com/berkmancenter/lumendatabase/blob/dev/doc/api_documentation.mkd). This may be useful, particularly for those interested in conducting [complex full-text API searches](https://github.com/berkmancenter/lumendatabase/blob/dev/doc/api_documentation.mkd#search-notices-via-fulltext).
 
-```R
-library("lumendb")
+The key functionality of the package is to retrieve notices by their identification numbers and to search for notices. To retrieve the first notice ever sent to Chilling Effects, just query it:
+
+```{r}
+x <- ldnotice(1)
+summary(x)
 ```
 
-Coming soon...
+The `summary()` method will print some essential details for each notice, as seen above.
+
+The other major function is to search for notices by keyword. The search functionality is pretty complicated, so I have not written R-specific documentation for it. The search API is based on elastic search and [Lumen's documentation is available on GitHub](https://github.com/berkmancenter/lumendatabase/blob/dev/doc/api_documentation.mkd#search-notices-via-fulltext) for those who are interested. As a simple example, one can perform a full-text search for notices related to YouTube:
+
+```{r}
+x <- ldsearch(list(term = "youtube"))
+print(x)
+```
+
+Another example would be to retrieve 100 requests from a major takedown requester, The Publishers Association, which represents a large number of publishing companies:
+
+```{r}
+# query 50 notices
+x <- ldsearch(list(sender_name = "The Publishers Association"), per_page = 50)
+
+# view first two notices
+summary(x[[1]])
+summary(x[[2]])
+```
+
+The `ldsearch()` function is, like the API it wraps, paginated and pagination details are printed by to the console by default and are available in `meta` attribute in the search result list.
+
+Note: the notice submission API is not yet implemented in this package.
 
