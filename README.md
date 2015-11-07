@@ -12,8 +12,7 @@ All Lumen Database data [is released under to Public Domain (CC0)](https://www.l
 
 This package is not yet on CRAN. To install the latest development version from GitHub, run the following:
 
-
-```r
+```R
 if(!require("devtools")){
     install.packages("devtools")
     library("devtools")
@@ -21,30 +20,11 @@ if(!require("devtools")){
 install_github("leeper/lumendb")
 ```
 
-```
-## Downloading GitHub repo leeper/lumendb@master
-## Installing lumendb
-## "C:/PROGRA~1/R/R-32~1.2/bin/x64/R" --no-site-file --no-environ --no-save  \
-##   --no-restore CMD INSTALL  \
-##   "C:/Users/Thomas/AppData/Local/Temp/RtmpovfUKM/devtools1b0855b055a7/leeper-lumendb-80f9b4a"  \
-##   --library="C:/Program Files/R/R-3.2.2/library" --install-tests 
-## 
-## Reloading installed lumendb
-## 
-## Attaching package: 'lumendb'
-## 
-## The following objects are masked _by_ '.GlobalEnv':
-## 
-##     ldentities, ldnotice, ldsearch, ldtopics, lumenHTTP
-```
-
-```r
-library("lumendb")
-```
-
 Use of the package does not require an API token, though Lumen rate limits non-authenticated requests. To request a token, contact Lumen directly at: team (at) lumendatabase.org. The token should then be stored as an environment variable:
 
+```R
 Sys.setenv(LUMEN_TOKEN = "t1o2k3e4n5v6a7l8u9e")
+```
 
 Or this can be passed atomically to every API call. Setting the environment variable is simpler and more secure because it will not be recorded in R history logs.
 
@@ -55,6 +35,7 @@ The key functionality of the package is to retrieve notices by their identificat
 
 
 ```r
+library("lumendb")
 x <- ldnotice(1)
 summary(x)
 ```

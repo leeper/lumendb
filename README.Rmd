@@ -12,18 +12,19 @@ All Lumen Database data [is released under to Public Domain (CC0)](https://www.l
 
 This package is not yet on CRAN. To install the latest development version from GitHub, run the following:
 
-```{r}
+```R
 if(!require("devtools")){
     install.packages("devtools")
     library("devtools")
 }
 install_github("leeper/lumendb")
-library("lumendb")
 ```
 
 Use of the package does not require an API token, though Lumen rate limits non-authenticated requests. To request a token, contact Lumen directly at: team (at) lumendatabase.org. The token should then be stored as an environment variable:
 
+```R
 Sys.setenv(LUMEN_TOKEN = "t1o2k3e4n5v6a7l8u9e")
+```
 
 Or this can be passed atomically to every API call. Setting the environment variable is simpler and more secure because it will not be recorded in R history logs.
 
@@ -33,6 +34,7 @@ Or this can be passed atomically to every API call. Setting the environment vari
 The key functionality of the package is to retrieve notices by their identification numbers and to search for notices. To retrieve the first notice ever sent to Chilling Effects, just query it:
 
 ```{r}
+library("lumendb")
 x <- ldnotice(1)
 summary(x)
 ```
