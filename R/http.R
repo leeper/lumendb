@@ -42,7 +42,7 @@ ldnotice <- function(notice, ...) {
 
 #' @export
 summary.lumen_notice <- function(object, ...) {
-    cat(x$type, " notice (", object$id, "): ", object$title, "\n", sep = "")
+    cat(object$type, " notice (", object$id, "): ", object$title, "\n", sep = "")
     cat("Date Received: ", object$date_received, "\n", sep = "")
     cat("Sender:        ", object$sender_name, "\n", sep = "")
     cat("Principal:     ", object$principal_name, "\n", sep = "")

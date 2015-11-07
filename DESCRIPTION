@@ -10,5 +10,5 @@ Description: A simple client for the Lumen Database <https://lumendatabase.org/>
 License: GPL (>= 2)
 URL: https://github.com/leeper/lumendb
 BugReports: https://github.com/leeper/lumendb/issues
-Imports: httr, jsonlite
+Imports: httr
 Suggests: testthat
