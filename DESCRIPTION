@@ -1,8 +1,8 @@
 Package: lumendb
 Type: Package
 Title: Lumen Database API Client
-Version: 0.1.3
-Date: 2015-11-07
+Version: 0.2.0
+Date: 2015-12-22
 Authors@R: c(person("Thomas J.", "Leeper", role = c("aut", "cre"),
                     email = "thosjleeper@gmail.com"))
 Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>

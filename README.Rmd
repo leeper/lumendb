@@ -31,7 +31,7 @@ Or this can be passed atomically to every API call. Setting the environment vari
 ## Code Examples ##
 
 
-The key functionality of the package is to retrieve notices by their identification numbers and to search for notices. To retrieve the first notice ever sent to Chilling Effects, just query it:
+The key functionality of the package is to retrieve notices by their identification numbers and to search for notices. To retrieve a single notice, just query it:
 
 ```{r}
 library("lumendb")
