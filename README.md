@@ -4,22 +4,6 @@
 
 All Lumen Database data [is released under to Public Domain (CC0)](https://www.lumendatabase.org/pages/license), though the API has additional [terms of use](https://lumendatabase.org/pages/api_terms).
 
-## Installation ##
-
-[![CRAN](http://www.r-pkg.org/badges/version/lumendb)](http://cran.r-project.org/package=lumendb)
-[![Build Status](https://travis-ci.org/leeper/lumendb.png?branch=master)](https://travis-ci.org/leeper/lumendb) 
-[![codecov.io](http://codecov.io/github/leeper/lumendb/coverage.svg?branch=master)](http://codecov.io/github/leeper/lumendb?branch=master)
-
-This package is not yet on CRAN. To install the latest development version from GitHub, run the following:
-
-```R
-if(!require("devtools")){
-    install.packages("devtools")
-    library("devtools")
-}
-install_github("leeper/lumendb")
-```
-
 Use of the package does not require an API token, though Lumen rate limits non-authenticated requests. To request a token, contact Lumen directly at: team (at) lumendatabase.org. The token should then be stored as an environment variable:
 
 ```R
@@ -204,3 +188,18 @@ The `ldsearch()` function is, like the API it wraps, paginated and pagination de
 
 Note: the notice submission API is not yet implemented in this package.
 
+## Installation ##
+
+[![CRAN](http://www.r-pkg.org/badges/version/lumendb)](http://cran.r-project.org/package=lumendb)
+![Downloads](http://cranlogs.r-pkg.org/badges/lumendb)
+[![Build Status](https://travis-ci.org/leeper/lumendb.png?branch=master)](https://travis-ci.org/leeper/lumendb) 
+[![codecov.io](http://codecov.io/github/leeper/lumendb/coverage.svg?branch=master)](http://codecov.io/github/leeper/lumendb?branch=master)
+
+This package is not yet on CRAN. To install the latest development version from GitHub, run the following:
+
+```R
+if(!require("ghit")){
+    install.packages("ghit")
+}
+ghit::install_github("leeper/lumendb")
+```
