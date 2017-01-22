@@ -9,6 +9,7 @@
 #' @param token A character string containing a Lumen Database API token. If missing, defaults to value stored in environment variable \env{LUMEN_TOKEN}.
 #' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}.
 #' @return A list.
+#' @import xml2
 #' @export
 lumenHTTP <- function(verb = "GET",
                       path = "", 

@@ -1,4 +1,4 @@
-# Lumen Database API Client #
+# Lumen Database API Client
 
 **lumendb** is a simple client package for the [Lumen Database](http://lumendatabase.org/) (formerly Chilling Effects) [API](https://github.com/berkmancenter/lumendatabase/blob/master/doc/api_documentation.mkd). It can retrieve, as well as deposit, copyright takedown notices from the Lumen database. It may be useful for tracking who is sending copyright-related cease and desist orders and what material is being used in apparent violation of copyright.
 
@@ -12,7 +12,7 @@ Sys.setenv(LUMEN_TOKEN = "t1o2k3e4n5v6a7l8u9e")
 
 Or this can be passed atomically to every API call. Setting the environment variable is simpler and more secure because it will not be recorded in R history logs.
 
-## Code Examples ##
+## Code Examples
 
 
 The key functionality of the package is to retrieve notices by their identification numbers and to search for notices. To retrieve a single notice, just query it:
@@ -47,17 +47,17 @@ The `ldsearch()` function is, like the API it wraps, paginated and pagination de
 
 Note: the notice submission API is not yet implemented in this package.
 
-## Installation ##
+## Installation
 
-[![CRAN](http://www.r-pkg.org/badges/version/lumendb)](http://cran.r-project.org/package=lumendb)
-![Downloads](http://cranlogs.r-pkg.org/badges/lumendb)
+[![CRAN](https://www.r-pkg.org/badges/version/lumendb)](https://cran.r-project.org/package=lumendb)
+![Downloads](https://cranlogs.r-pkg.org/badges/lumendb)
 [![Build Status](https://travis-ci.org/leeper/lumendb.png?branch=master)](https://travis-ci.org/leeper/lumendb) 
-[![codecov.io](http://codecov.io/github/leeper/lumendb/coverage.svg?branch=master)](http://codecov.io/github/leeper/lumendb?branch=master)
+[![codecov.io](https://codecov.io/github/leeper/lumendb/coverage.svg?branch=master)](https://codecov.io/github/leeper/lumendb?branch=master)
 
 This package is not yet on CRAN. To install the latest development version from GitHub, run the following:
 
 ```R
-if(!require("ghit")){
+if (!require("ghit")) {
     install.packages("ghit")
 }
 ghit::install_github("leeper/lumendb")
