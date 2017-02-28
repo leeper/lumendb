@@ -1,3 +1,7 @@
+# CHANGES TO lumendb 0.2.2
+
+* Stopped running tests on CRAN due to API query limits. (#2)
+
 # CHANGES TO lumendb 0.2.1
 
 * Import xml2 to avoid test faults on some platforms. (#1)

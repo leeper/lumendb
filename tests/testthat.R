@@ -1,4 +1,6 @@
 library("testthat")
 library("lumendb")
 
-test_check("lumendb")
+if (Sys.getenv("LUMEN_TOKEN") != "") {
+    test_check("lumendb")
+}

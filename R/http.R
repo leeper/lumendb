@@ -20,15 +20,15 @@ lumenHTTP <- function(verb = "GET",
                       ...) {
     url <- paste0(base, path)
     h <- httr::add_headers("Accept" = "application/json", 
-                           "AUTHENTICATION_TOKEN" = token)
+                           "X-Authentication-Token" = token)
     if (!length(query)) query <- NULL
     if (verb == "GET") {
         r <- httr::GET(url, query = query, h, ...)
     } else if (verb == "POST") {
         r <- httr::POST(url, body = body, query = query, h, ...)
     } 
-    httr::warn_for_status(r)
-    return(httr::content(r, "parsed"))
+    httr::stop_for_status(r)
+    return(httr::content(r, "parsed", encoding = "UTF-8"))
 }
 
 #' @title Get a Notice
@@ -101,7 +101,7 @@ print.lumen_topic <- function(x, ...) {
 ldsearch <- function(query = list(), page = 1, per_page = 10, verbose = TRUE, ...) {
     x <- lumenHTTP(path = paste0("/notices/search"), 
                    query = c(query, list(page = page, per_page = per_page)), ...)
-    if (verbose) {
+    if (isTRUE(verbose)) {
         message(sprintf("Page %s of %s Returned. Response contains %s of %s %s. ", 
                         x$meta$current_page, x$meta$total_pages, 
                         x$meta$per_page, x$meta$total_entries, 
